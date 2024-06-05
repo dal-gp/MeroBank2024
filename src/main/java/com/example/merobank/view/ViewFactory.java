@@ -1,8 +1,10 @@
 package com.example.merobank.view;
 
+import com.example.merobank.controller.admin.AdminController;
 import com.example.merobank.controller.client.ClientController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -52,6 +54,25 @@ public class ViewFactory {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void showAdminWindow() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/merobank/admin/admin.fxml"));
+        // Must have pre-constructed controller
+        // since we have not specified any on admin.fxml
+        AdminController controller = new AdminController();
+        fxmlLoader.setController(controller);
+
+        Scene scene = null;
+        try {
+            scene = new Scene(fxmlLoader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void closeWindow(Stage stage) {
