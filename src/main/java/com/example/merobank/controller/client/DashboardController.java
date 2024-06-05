@@ -1,4 +1,4 @@
-package com.example.merobank;
+package com.example.merobank.controller.client;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;

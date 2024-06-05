@@ -12,7 +12,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="750.0" prefWidth="850.0"
             xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.merobank.AccountsController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.merobank.controller.client.AccountsController">
    <Text layoutX="69.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0"
          text="Checking Account:" AnchorPane.leftAnchor="14.0"
          AnchorPane.topAnchor="14.0"/>

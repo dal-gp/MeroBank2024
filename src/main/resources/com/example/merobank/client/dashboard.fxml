@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.merobank.DashboardController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.merobank.controller.client.DashboardController">
    <Text fx:id="userNameText" layoutX="71.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi, Dal" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0" />
    <Text layoutX="30.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Accounts" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="90.0" />
    <Label fx:id="dateLabel" layoutX="753.0" layoutY="39.0" text="Today, 2024-04-06" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="27.0" />

@@ -1,5 +1,6 @@
-package com.example.merobank;
+package com.example.merobank.view;
 
+import com.example.merobank.controller.client.ClientController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +38,7 @@ public class ViewFactory {
     }
 
     public void showClientWindow() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/merobank/client.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/merobank/client/client.fxml"));
         // Must set the controller
         ClientController clientController = new ClientController();
         fxmlLoader.setController(clientController);
@@ -60,7 +61,7 @@ public class ViewFactory {
     public AnchorPane getTransactionsView() {
         if(transactionsView == null) {
             try {
-                transactionsView = new FXMLLoader(getClass().getResource("/com/example/merobank/transactions.fxml")).load();
+                transactionsView = new FXMLLoader(getClass().getResource("/com/example/merobank/client/transactions.fxml")).load();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -71,7 +72,7 @@ public class ViewFactory {
     public AnchorPane getDashboardView() {
         if(dashboardView == null) {
             try {
-                dashboardView = new FXMLLoader(getClass().getResource("/com/example/merobank/dashboard.fxml")).load();
+                dashboardView = new FXMLLoader(getClass().getResource("/com/example/merobank/client/dashboard.fxml")).load();
             } catch (IOException e) {
                 e.printStackTrace();
             }

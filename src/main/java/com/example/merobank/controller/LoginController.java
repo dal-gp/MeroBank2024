@@ -1,5 +1,6 @@
-package com.example.merobank;
+package com.example.merobank.controller;
 
+import com.example.merobank.model.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

@@ -1,7 +1,6 @@
 package com.example.merobank;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import com.example.merobank.model.Model;
 import javafx.stage.Stage;
 
 import java.io.IOException;

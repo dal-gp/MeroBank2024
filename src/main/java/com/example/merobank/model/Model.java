@@ -1,4 +1,6 @@
-package com.example.merobank;
+package com.example.merobank.model;
+
+import com.example.merobank.view.ViewFactory;
 
 public class Model {
     private static Model instance;
