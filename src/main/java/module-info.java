@@ -1,6 +1,7 @@
 module com.example.merobank {
     requires javafx.controls;
     requires javafx.fxml;
+    requires de.jensd.fx.glyphs.fontawesome;
 
 
     opens com.example.merobank to javafx.fxml;
