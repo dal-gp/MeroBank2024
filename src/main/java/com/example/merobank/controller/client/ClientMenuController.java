@@ -1,6 +1,7 @@
 package com.example.merobank.controller.client;
 
 import com.example.merobank.model.Model;
+import com.example.merobank.view.ClientMenuOptions;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -29,10 +30,10 @@ public class ClientMenuController implements Initializable {
     }
 
     private void onDashboardButtonClick() {
-        Model.getInstance().getViewFactory().clientSelectedItemMenuProperty().set("Dashboard");
+        Model.getInstance().getViewFactory().clientSelectedItemMenuProperty().set(ClientMenuOptions.DASHBOARD);
     }
 
     private void onTransactionsButtonClick() {
-        Model.getInstance().getViewFactory().clientSelectedItemMenuProperty().set("Transactions");
+        Model.getInstance().getViewFactory().clientSelectedItemMenuProperty().set(ClientMenuOptions.TRANSACTIONS);
     }
 }

@@ -2,6 +2,8 @@ package com.example.merobank.view;
 
 import com.example.merobank.controller.admin.AdminController;
 import com.example.merobank.controller.client.ClientController;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
@@ -14,18 +16,18 @@ import java.io.IOException;
 
 public class ViewFactory {
 
-    private final StringProperty clientSelectedItemMenu;
+    private final ObjectProperty<ClientMenuOptions> clientSelectedItemMenu;
     private AnchorPane transactionsView;
     private AnchorPane dashboardView;
 
     private AccountType loginAccountType;
 
     public ViewFactory() {
-        clientSelectedItemMenu = new SimpleStringProperty("");
+        clientSelectedItemMenu = new SimpleObjectProperty<>();
         this.loginAccountType = AccountType.CLIENT;
     }
 
-    public StringProperty clientSelectedItemMenuProperty() {
+    public ObjectProperty<ClientMenuOptions> clientSelectedItemMenuProperty() {
         return clientSelectedItemMenu;
     }
 
