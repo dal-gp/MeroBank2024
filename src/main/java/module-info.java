@@ -13,4 +13,6 @@ module com.example.merobank {
     opens com.example.merobank.view to javafx.fxml;
     exports com.example.merobank.controller;
     opens com.example.merobank.controller to javafx.fxml;
+    exports com.example.merobank.controller.admin;
+    opens com.example.merobank.controller.admin to javafx.fxml;
 }

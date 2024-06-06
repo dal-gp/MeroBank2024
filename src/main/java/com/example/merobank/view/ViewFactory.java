@@ -18,12 +18,23 @@ public class ViewFactory {
     private AnchorPane transactionsView;
     private AnchorPane dashboardView;
 
+    private AccountType loginAccountType;
+
     public ViewFactory() {
         clientSelectedItemMenu = new SimpleStringProperty("");
+        this.loginAccountType = AccountType.CLIENT;
     }
 
     public StringProperty clientSelectedItemMenuProperty() {
         return clientSelectedItemMenu;
+    }
+
+    public AccountType getLoginAccountType() {
+        return loginAccountType;
+    }
+
+    public void setLoginAccountType(AccountType loginAccountType) {
+        this.loginAccountType = loginAccountType;
     }
 
     public void showLoginWindow() {
