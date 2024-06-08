@@ -34,6 +34,13 @@ public class LoginController implements Initializable {
         accountSelectorChoiceBox.setValue(Model.getInstance().getViewFactory().getLoginAccountType());
         accountSelectorChoiceBox.valueProperty().addListener(observable -> {
             Model.getInstance().getViewFactory().setLoginAccountType(accountSelectorChoiceBox.getValue());
+//            if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.ADMIN) {
+            if(accountSelectorChoiceBox.getValue() == AccountType.ADMIN) {
+                payeeAddressLabel.setText("Username:");
+            }
+            else {
+                payeeAddressLabel.setText("Payee Address:");
+            }
         });
         loginButton.setOnAction(e -> onLoginButtonClick());
     }
