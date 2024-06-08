@@ -5,15 +5,20 @@ import com.example.merobank.view.ViewFactory;
 public class Model {
     private static Model instance;
     private ClientManager clientManager;
+    private AdminManager adminManager;
     private Client client;
     private boolean clientLoginSuccessFlag;
+    private boolean adminLoginSuccessFlag;
 
     private final ViewFactory viewFactory;
 
     private Model(){
         this.viewFactory = new ViewFactory();
         this.clientManager = new ClientManager(new SqliteClientDAO());
+        this.adminManager = new AdminManager(new SqliteAdminDAO());
         this.client = new Client("", "", "", null, null, null);
+        clientLoginSuccessFlag = false;
+        adminLoginSuccessFlag = false;
     };
 
     public boolean isClientLoginSuccessFlag() {
@@ -22,6 +27,14 @@ public class Model {
 
     public void setClientLoginSuccessFlag(boolean clientLoginSuccessFlag) {
         this.clientLoginSuccessFlag = clientLoginSuccessFlag;
+    }
+
+    public boolean isAdminLoginSuccessFlag() {
+        return adminLoginSuccessFlag;
+    }
+
+    public void setAdminLoginSuccessFlag(boolean adminLoginSuccessFlag) {
+        this.adminLoginSuccessFlag = adminLoginSuccessFlag;
     }
 
     public Client getClient() {
@@ -45,7 +58,15 @@ public class Model {
         client = clientManager.getClientDetails(payeeAddress, password);
         if(client != null) {
             clientLoginSuccessFlag = true;
-            System.out.println(client);
+        }
+    }
+
+    public void evaluateAdminCredential(String username, String password) {
+        //declaring admin here , as we are not using this anywhere
+        Admin admin = new Admin("", "");
+        admin = adminManager.getAdmin(username, password);
+        if(admin != null) {
+            adminLoginSuccessFlag = true;
         }
     }
 }

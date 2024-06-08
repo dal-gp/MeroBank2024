@@ -51,7 +51,15 @@ public class LoginController implements Initializable {
                 errorLabel.setText("No such login credentials!");
             }
         } else {
-            Model.getInstance().getViewFactory().showAdminWindow();
+            Model.getInstance().evaluateAdminCredential(payeeAddressTextBox.getText(), passwordTextBox.getText());
+            if(Model.getInstance().isAdminLoginSuccessFlag()){
+                Model.getInstance().getViewFactory().showAdminWindow();
+                Model.getInstance().getViewFactory().closeWindow(stage);
+            } else {
+                payeeAddressTextBox.clear();
+                passwordTextBox.clear();
+                errorLabel.setText("No such login credentials!");
+            }
         }
     }
 }
