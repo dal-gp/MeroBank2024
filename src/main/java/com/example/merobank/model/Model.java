@@ -2,10 +2,13 @@ package com.example.merobank.model;
 
 import com.example.merobank.view.ViewFactory;
 
+import java.time.LocalDate;
+
 public class Model {
     private static Model instance;
     private ClientManager clientManager;
     private AdminManager adminManager;
+    private SqliteAccountDAO accountDAO;
     private Client client;
     private boolean clientLoginSuccessFlag;
     private boolean adminLoginSuccessFlag;
@@ -16,6 +19,7 @@ public class Model {
         this.viewFactory = new ViewFactory();
         this.clientManager = new ClientManager(new SqliteClientDAO());
         this.adminManager = new AdminManager(new SqliteAdminDAO());
+        this.accountDAO = new SqliteAccountDAO();
         this.client = new Client("", "", "", null, null, null);
         clientLoginSuccessFlag = false;
         adminLoginSuccessFlag = false;
@@ -68,5 +72,21 @@ public class Model {
         if(admin != null) {
             adminLoginSuccessFlag = true;
         }
+    }
+
+    public void createCheckingAccount(CheckingAccount checkingAccount){
+        accountDAO.addCheckingAccount(checkingAccount);
+    }
+
+    public void createSavingsAccount(SavingsAccount savingsAccount) {
+        accountDAO.addSavingsAccount(savingsAccount);
+    }
+
+    public void createClient(String firstName, String lastName, String payeeAddress, String password, LocalDate now) {
+        clientManager.addClient(firstName,lastName,payeeAddress,password,now);
+    }
+
+    public int getLastClientsId(){
+        return clientManager.getLastClientsId();
     }
 }

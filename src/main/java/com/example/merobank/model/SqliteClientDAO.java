@@ -35,4 +35,35 @@ public class SqliteClientDAO implements IClientDAO{
         }
         return null;
     }
+
+    @Override
+    public void addClient(String firstName, String lastName, String payeeAddress, String password, LocalDate date) {
+        String query = "INSERT INTO clients (first_name, last_name, payee_address, password, date) VALUES (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, payeeAddress);
+            preparedStatement.setString(4, password);
+            preparedStatement.setString(5, date.toString());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getClientsLastId() {
+        int id;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM sqlite_sequence WHERE name = 'clients'");
+            id = resultSet.getInt("seq");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+
 }
