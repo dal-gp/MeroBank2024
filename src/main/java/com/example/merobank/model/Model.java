@@ -1,6 +1,8 @@
 package com.example.merobank.model;
 
 import com.example.merobank.view.ViewFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.time.LocalDate;
 
@@ -12,6 +14,7 @@ public class Model {
     private Client client;
     private boolean clientLoginSuccessFlag;
     private boolean adminLoginSuccessFlag;
+    private ObservableList<Client> clients; // 2
 
     private final ViewFactory viewFactory;
 
@@ -23,7 +26,9 @@ public class Model {
         this.client = new Client("", "", "", null, null, null);
         clientLoginSuccessFlag = false;
         adminLoginSuccessFlag = false;
+        clients = FXCollections.observableArrayList(); // 3
     };
+
 
     public boolean isClientLoginSuccessFlag() {
         return clientLoginSuccessFlag;
@@ -43,6 +48,11 @@ public class Model {
 
     public Client getClient() {
         return client;
+    }
+
+
+    public ObservableList<Client> getClients() {
+        return clients;
     }
 
     public static Model getInstance(){
@@ -88,5 +98,18 @@ public class Model {
 
     public int getLastClientsId(){
         return clientManager.getLastClientsId();
+    }
+
+    public void setClients(){
+
+        // 1. get all client
+        // loop -> set sa,ca and add it to the clients list
+        for(Client client : clientManager.getAllClients()){
+            CheckingAccount checkingAccount = accountDAO.getCheckingAccount(client.getPayeeAddress());
+            SavingsAccount savingsAccount =accountDAO.getSavingsAccount(client.getPayeeAddress());
+            client.checkingAccountProperty().set(checkingAccount);
+            client.savingsAccountProperty().set(savingsAccount);
+            clients.add(client);
+        }
     }
 }

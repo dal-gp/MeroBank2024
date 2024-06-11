@@ -65,5 +65,27 @@ public class SqliteClientDAO implements IClientDAO{
         return id;
     }
 
+    @Override
+    public List<Client> getAllClients() {
+        List<Client> clients = new ArrayList<>();
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM clients";
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()) {
+                String fname = rs.getString("first_name");
+                String lname = rs.getString("last_name");
+                String pAddress = rs.getString("payee_address");
+                String[] dateParts = rs.getString("date").split("-");
+                LocalDate date = LocalDate.of(Integer.parseInt(dateParts[0]),
+                        Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
+                clients.add(new Client(fname, lname, pAddress, null, null,date));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clients;
+    }
+
 
 }

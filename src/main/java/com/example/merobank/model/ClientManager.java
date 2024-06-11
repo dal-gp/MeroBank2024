@@ -1,6 +1,7 @@
 package com.example.merobank.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ClientManager {
     private IClientDAO clientDAO;
@@ -22,4 +23,8 @@ public class ClientManager {
     public int getLastClientsId() {
         return clientDAO.getClientsLastId();
     }
+    public List<Client> getAllClients(){
+        return clientDAO.getAllClients();
+    }
+
 }

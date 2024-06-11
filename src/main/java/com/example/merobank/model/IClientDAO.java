@@ -10,4 +10,5 @@ public interface IClientDAO {
                            String password, LocalDate date);
 
     public int getClientsLastId();
+    public List<Client> getAllClients();
 }
