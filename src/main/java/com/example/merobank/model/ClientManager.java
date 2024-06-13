@@ -27,4 +27,12 @@ public class ClientManager {
         return clientDAO.getAllClients();
     }
 
+    public Client searchClient(String payeeAddress) {
+        for(Client client : clientDAO.getAllClients()){
+            if(client.getPayeeAddress().equals(payeeAddress)){
+                return client;
+            }
+        }
+        return null;
+    }
 }

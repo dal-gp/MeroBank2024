@@ -27,6 +27,11 @@ public class AdminMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createAccountButton.setOnAction(event -> onCreateAccountButtonClick());
         clientsButton.setOnAction(event -> onClientsButtonClicked());
+        depositButton.setOnAction(event -> onDepositButtonClicked());
+    }
+
+    private void onDepositButtonClicked() {
+        Model.getInstance().getViewFactory().adminSelectedMenuItemProperty().set(AdminMenuOptions.DEPOSIT);
     }
 
     private void onClientsButtonClicked() {

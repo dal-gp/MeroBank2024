@@ -21,6 +21,9 @@ public class AdminController implements Initializable {
                         case CLIENTS:
                             adminParent.setCenter(Model.getInstance().getViewFactory().getClientsView());
                             break;
+                        case DEPOSIT:
+                            adminParent.setCenter(Model.getInstance().getViewFactory().getDepositView());
+                            break;
                         default:
                             adminParent.setCenter(Model.getInstance().getViewFactory().getCreateClientView());
                     }

@@ -112,4 +112,20 @@ public class Model {
             clients.add(client);
         }
     }
+
+    public ObservableList<Client> searchClient(String pAddress) {
+        ObservableList<Client> searchResults = FXCollections.observableArrayList();
+        Client client = clientManager.searchClient(pAddress);
+       if( client != null) {
+           client.savingsAccountProperty().set(accountDAO.getSavingsAccount(pAddress));
+           client.checkingAccountProperty().set(accountDAO.getSavingsAccount(pAddress));
+           searchResults.add(client);
+           return  searchResults;
+       }
+       return null;
+    }
+
+    public void depositSavings(String payeeAddress, double balance) {
+        accountDAO.updateSavingsAccount(payeeAddress, balance);
+    }
 }

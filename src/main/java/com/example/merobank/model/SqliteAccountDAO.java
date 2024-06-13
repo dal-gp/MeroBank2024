@@ -85,4 +85,32 @@ public class SqliteAccountDAO implements IAccountDAO{
         }
         return null;
     }
+
+    // better to move this one to AccountManager class
+    // need id field
+//    public void updateSavingsAccount(SavingsAccount account) {
+//        try {
+//            String query = "UPDATE savings_account SET owner = ?, account_number = ?, withdrawal_limit = ?, balance = ? WHERE id = ?";
+//            PreparedStatement preparedStatement = connection.prepareStatement(query);
+//            preparedStatement.setString(1, account.ownerProperty().get());
+//            preparedStatement.setString(2, account.accountNumberProperty().get());
+//            preparedStatement.setDouble(3, account.getWithdrawal_limitProperty().get());
+//            preparedStatement.setDouble(4, account.balanceProperty().get());
+//            preparedStatement.setInt(5, account.);
+//        } catch (SQLException e){
+//            e.printStackTrace();
+//        }
+//    }
+
+    public void updateSavingsAccount(String payeeAddress, double balance) {
+        try {
+            String query = "UPDATE savings_accounts SET balance = ? WHERE owner = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setDouble(1, balance);
+            preparedStatement.setString(2, payeeAddress);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }
